@@ -1,3 +1,8 @@
+/*NOTE:::--  
+  Please give atleast one space between two saparate number or operator 
+  ex..::  2 23 * 5 10 / + 5 - 
+  So that we can not get confussed between 223* whether it is 22 3 * or 2 23 *
+*/
 #include <iostream>
 #include<stack>
 #include<string.h>
@@ -36,6 +41,8 @@ int postfix_eval(char a[])
             s.pop();
             c=s.top();
             s.pop();
+            if(a[i]=='^')
+                s.push(pow(c,b));
             if(a[i]=='*')
                 s.push(b*c);
             if(a[i]=='/')
