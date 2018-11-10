@@ -1,0 +1,86 @@
+
+//this is a hacker rank code for a problem using qudratic hashing 
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <array>
+using namespace std;
+void print_data(int a[],int n);
+void insert_data(int a[],int data,int n);
+void delete_data(int a[],int data,int n);
+void search(int a[],int data,int n);
+int probe=0;
+
+int main() {
+    int n,q,ch,data;
+    cin>>n>>q;
+    int a[n];
+    for(int i=0;i<n;i++)
+        a[i]=0;
+    for(int i=0;i<q;i++)
+    {
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:cin>>data;
+                insert_data(a,data,n);
+                break;
+            case 2:cin>>data;
+                probe=0;
+                search(a,data,n);
+                cout<<probe+1<<endl;
+            break;
+            case 3:cin>>data;
+                delete_data(a,data,n);
+                break;
+            case 4:print_data(a,n);
+                cout<<endl;
+        }
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
+void insert_data(int a[],int data,int n)
+{
+    int index,i=0;
+    index=data % n;
+    while(a[index]!=0 && a[index]!=-1 )
+    {
+        i++;
+        index=(data%n+i*i)%n;
+    }
+    a[index]=data;
+}
+
+void print_data(int a[],int n)
+{
+    for(int i=0;i<n;i++)
+        if(a[i]==0 or a[i]==-1)
+            cout<<"NULL ";
+        else cout<<a[i]<<" ";
+}
+void delete_data(int a[],int data,int n)
+{
+    int index,i=0;
+    index=data % n;
+    while(a[index]!=data)
+    {
+        i++;
+        index=(data%n+i*i)%n;
+    }
+    a[index]=0;
+}
+void search(int a[],int data,int n)
+{
+    int index,i=0;
+    index=data % n;
+    while(a[index]!=data)
+    {       
+        probe++;
+        i++;
+        index=(data%n+i*i)%n;
+    }
+}
