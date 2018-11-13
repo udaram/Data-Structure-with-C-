@@ -1,5 +1,4 @@
-// depth first traversal in graph represented by adjacency matrix
-
+// depth first traversal in graph representing it with adjacency list
 
 #include <vector>
 #include <iostream>
