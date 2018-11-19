@@ -1,0 +1,66 @@
+int minimum_unvisited(int n,int visited[],vector<int>result_count)
+{
+    int index,minimum=INT_MAX,i=0;
+    while(i<n)
+    {
+        if(visited[i]==0 && result_count[i]<=minimum)
+        {
+            index=i;
+            minimum=result_count[i];
+        }
+        i++;
+    }
+    return index;
+}
+vector<int> DjikstrashortestReach(int n, vector<vector<int>> edges, int s,int m) {
+    int visited[n];
+    for(int oi=0;oi<n;oi++)
+        visited[oi]=0;
+    
+    int a[n][n];
+    for(int oi=0;oi<n;oi++){
+        for(int io=0;io<n;io++)
+            a[oi][io]=0;
+    }
+    for(int k=0;k<m;k++)
+    {
+      if(a[edges[k][0]-1][edges[k][1]-1]!=0)
+      {
+          if(edges[k][2]<a[edges[k][0]-1][edges[k][1]-1])
+          {
+               a[edges[k][0]-1][edges[k][1]-1]=edges[k][2];
+               a[edges[k][1]-1][edges[k][0]-1]=edges[k][2];
+          }
+      }
+        else
+        {
+                a[edges[k][0]-1][edges[k][1]-1]=edges[k][2];
+                a[edges[k][1]-1][edges[k][0]-1]=edges[k][2];
+        }
+    }
+    
+   vector<int> result_count(n,INT_MAX); 
+    result_count[s-1]=0;
+    for(int j=0;j<n-1;j++)
+    {
+       int u=minimum_unvisited(n,visited,result_count);
+        visited[u]=1;
+        int i=0;
+        while(i<n)
+        {
+            if(!visited[i] && a[u][i] && result_count[u] != INT_MAX && (result_count[u]+a[u][i] < result_count[i])) 
+                
+                result_count[i] = result_count[u] + a[u][i]; 
+            i++;
+        }
+    }
+    result_count.erase(result_count.begin()+s-1);
+    for(int i=0;i<result_count.size();i++)
+    {
+        if(result_count[i]==INT_MAX)
+        {
+            result_count[i] = -1;
+        }
+    }
+    return result_count;
+}
