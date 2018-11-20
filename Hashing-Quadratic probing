@@ -40,7 +40,6 @@ int main() {
                 cout<<endl;
         }
     }
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
     return 0;
 }
 void insert_data(int a[],int data,int n)
