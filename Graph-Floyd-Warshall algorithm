@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+int min(int a,int b)
+{
+    if(a>b)
+    return b;
+}
+int main()
+{
+    int n,m;
+    int u,v,w;
+    cin>>n>>m;
+    //n # of vertices  m # of edges
+     //input format
+    // 4 4  <-n,m
+    // 0 1 4  <-u,v,w
+    // 0 3 5
+    // 3 2 3 
+    // 2 1 -10
+    
+    vector<int>temp(n);
+    vector<vector<int>>a(n,temp);
+    vector<vector<int>>b(n,temp);
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(i==j)
+            a[i][j]=0;
+            else
+            a[i][j]=INT_MAX;
+        }
+    }
+    for(int i=0;i<m;i++)
+    {
+        cin>>u>>v>>w;
+        //replace(a.begin(), myvector.end(), 20, 99)
+        a[u][v]=w;
+    }
+    
+    
+    //Floyd-Warshall algorithm
+    for(int k=0;k<n;k++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            for(int i=0;i<n-1;i++)
+            {
+                b[i][j]=min(a[i][j],a[i][k]+b[k][j]);
+            }
+        }
+        a=b;
+    }
+    cout<<"\nThe New transive closure Matrix for Graph::";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n";
+        for(int j=0;j<n;j++)
+        cout<<a[i][j]<<" ";
+    }
+    
+    
+}
