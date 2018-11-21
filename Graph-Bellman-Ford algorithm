@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n,m;
+    int u,v,w;
+    cin>>n>>m;
+    pair<int,int>p;
+    vector<pair<int,int>>temp;
+    //input format
+    // 4 4  <-n,m
+    // 0 1 4  <-u,v,w
+    // 0 3 5
+    // 3 2 3 
+    // 2 1 -10
+    // 0   <-s
+    
+    vector<vector<pair<int,int>>>a(n,temp);
+    //n # of vertices  m # of edges
+    for(int i=0;i<m;i++)
+    {
+        cin>>u>>v>>w;
+        p=make_pair(v,w);
+        a[u].push_back(p);
+    }
+    int s;//source
+    cin>>s;
+    int distance[n];
+    distance[s]=0;
+    for(int i=1;i<n;i++)
+    {
+        distance[i]=INT_MAX;
+    }
+    
+    
+    //Bellman ford algorithm
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<a.size();j++)
+        {
+            for(int k=0;k<a[j].size();k++)
+            {
+                u=j;
+                p=a[u][k];
+                v=p.first;
+                w=p.second;
+                if(distance[u]+w<distance[v])
+                {
+                    distance[v]=distance[u]+w;
+                }
+            }
+        }
+        
+    }
+    
+    cout<<"Path length of each vertices are::";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n"<<i<<"   "<<distance[i];
+    }
+    
+}
