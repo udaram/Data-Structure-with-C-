@@ -1,10 +1,10 @@
 # Data-Structure
 This repo contains source code for ::
 
-*1.Link-List,
-*2.Stack,
+*1.Link-List
+*2.Stack
 *3.Queue
-*Tree,
+*Tree
 *AVL tree,
 *Hashing-Quadratic hashing,
 *Graph-repersentation of graph using adjacency matrix or list,
