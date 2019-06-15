@@ -1,5 +1,5 @@
 # Data-Structure
-This repo contains source code for ::
+**This repo contains source code for ::
 
 *  1.Link-List<br/>
 *  2.Stack<br/>
@@ -13,7 +13,8 @@ This repo contains source code for ::
 *  10.Topological Sort,<br/>
 *  11.Kruskal algo for minimum spanning tree,<br/>
 
-##Sorting Algorithms::
+**Sorting Algorithms::
+
 *  1.selection Sort
 *  2.insertion sort
 *  3.bubble sort
