@@ -1,9 +1,9 @@
 # Data-Structure
-This repo contains source code for 
+This repo contains source code for ::
 
-*Link-List,
-*Stack,
-*Queue
+*1.Link-List,
+*2.Stack,
+*3.Queue
 *Tree,
 *AVL tree,
 *Hashing-Quadratic hashing,
@@ -13,7 +13,7 @@ This repo contains source code for
 *Topological Sort,
 *Kruskal algo for minimum spanning tree,
 
-#Sorting Algorithms::
+##Sorting Algorithms::
 *  1.selection Sort
 *  2.insertion sort
 *  3.bubble sort
